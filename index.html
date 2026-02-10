@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Luz en la Oscuridad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="particulas"></canvas>
+    
+    <div class="habitacion">
+        <!-- Repisa con la vela -->
+        <div class="repisa">
+            <div class="vela" id="vela">
+                <div class="mecha"></div>
+                <div class="llama">
+                    <div class="llama-centro"></div>
+                    <div class="llama-exterior"></div>
+                </div>
+                <div class="cuerpo-vela">
+                    <div class="cera-derretida"></div>
+                </div>
+                <div class="brillo-vela"></div>
+            </div>
+        </div>
+
+        <!-- Elementos de la habitación -->
+        <div class="muebles" id="muebles">
+            <div class="cuadro">
+                <div class="marco-interior"></div>
+            </div>
+            <div class="estanteria">
+                <div class="estante"></div>
+                <div class="estante"></div>
+                <div class="estante"></div>
+            </div>
+            <div class="silla">
+                <div class="respaldo"></div>
+                <div class="asiento"></div>
+                <div class="pata pata1"></div>
+                <div class="pata pata2"></div>
+            </div>
+            <div class="planta">
+                <div class="maceta"></div>
+                <div class="hoja hoja1"></div>
+                <div class="hoja hoja2"></div>
+                <div class="hoja hoja3"></div>
+            </div>
+            <div class="lampara">
+                <div class="bombilla"></div>
+                <div class="cable"></div>
+            </div>
+            <div class="ventana">
+                <div class="vidrio"></div>
+            </div>
+        </div>
+
+        <!-- Sistema de fuego avanzado -->
+        <div class="fuego-contenedor" id="fuego">
+            <div class="resplandor-base"></div>
+            <div class="ondas-calor"></div>
+            <div class="llamas-capa-1"></div>
+            <div class="llamas-capa-2"></div>
+            <div class="llamas-capa-3"></div>
+            <div class="brasas" id="brasas"></div>
+        </div>
+
+        <!-- Humo -->
+        <div class="humo-contenedor" id="humo"></div>
+
+        <!-- Mensaje -->
+        <div class="mensaje" id="mensaje">
+            <div class="mensaje-wrapper">
+                <p class="texto-principal">Eres la persona que llenó de luz mi vida..</p>
+                <div class="destello-texto"></div>
+            </div>
+        </div>
+
+        <!-- Chispas volando -->
+        <div class="chispas-contenedor" id="chispas"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
