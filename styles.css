@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Georgia', serif;
+}
+
+.habitacion {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* REPISA */
+.repisa {
+    position: absolute;
+    top: 80px;
+    right: 60px;
+    width: 120px;
+    height: 15px;
+    background: linear-gradient(to bottom, #2a1810, #1a0f08);
+    border-radius: 3px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+/* VELA */
+.vela {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: invitar 2s ease-in-out infinite;
+}
+
+.vela:hover {
+    transform: translateX(-50%) scale(1.05);
+}
+
+@keyframes invitar {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(-50%) translateY(-3px) rotate(-2deg);
+    }
+    75% {
+        transform: translateX(-50%) translateY(-3px) rotate(2deg);
+    }
+}
+
+.cuerpo-vela {
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(to right, #f4e4c1, #fff8dc, #f4e4c1);
+    border-radius: 3px 3px 0 0;
+    position: relative;
+    box-shadow: inset 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mecha {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 10px;
+    background: #1a1a1a;
+    border-radius: 1px;
+}
+
+/* LLAMA DE LA VELA */
+.llama {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: radial-gradient(ellipse at center bottom, 
+        #ff6b00 0%, 
+        #ff8c00 30%, 
+        #ffa500 50%, 
+        #ffff00 70%, 
+        transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: parpadeo 0.3s ease-in-out infinite alternate;
+    filter: blur(1px);
+}
+
+.llama-centro {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 15px;
+    background: radial-gradient(ellipse at center, 
+        #ffeb3b 0%, 
+        #ffd54f 50%, 
+        transparent 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+@keyframes parpadeo {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scaleY(0.95);
+        opacity: 0.9;
+    }
+}
+
+/* BRILLO DE LA VELA */
+.brillo-vela {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, 
+        rgba(255, 200, 100, 0.3) 0%, 
+        rgba(255, 150, 50, 0.15) 30%, 
+        transparent 70%);
+    border-radius: 50%;
+    animation: respiracion 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes respiracion {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.1);
+    }
+}
+
+/* ANIMACIÓN DE CAÍDA */
+.vela.cayendo {
+    animation: caer 1s ease-in forwards;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateX(-50%) translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(calc(100vh - 80px)) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* MUEBLES DE LA HABITACIÓN */
+.muebles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.muebles.visible {
+    opacity: 0.3;
+}
+
+.cuadro {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 100px;
+    height: 80px;
+    background: linear-gradient(135deg, #4a3020 0%, #2a1810 100%);
+    border: 3px solid #6b4423;
+}
+
+.estanteria {
+    position: absolute;
+    top: 30%;
+    right: 15%;
+    width: 80px;
+    height: 120px;
+    background: linear-gradient(to right, #3a2515 0%, #2a1810 100%);
+    border-left: 2px solid #5a3520;
+}
+
+.silla {
+    position: absolute;
+    bottom: 25%;
+    left: 30%;
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(to bottom, #4a3020 0%, #2a1810 100%);
+    border-radius: 5px 5px 0 0;
+}
+
+.planta {
+    position: absolute;
+    bottom: 30%;
+    right: 25%;
+    width: 50px;
+    height: 70px;
+    background: linear-gradient(to top, #2a1810 0%, #1a3a1a 100%);
+    border-radius: 50% 50% 0 0;
+}
+
+/* FUEGO GRANDE */
+.fuego-contenedor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fuego-contenedor.activo {
+    animation: revelar-fuego 2s ease forwards;
+}
+
+@keyframes revelar-fuego {
+    to {
+        opacity: 1;
+    }
+}
+
+.llamas-grandes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.llama-grande {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    height: 0;
+    background: linear-gradient(to top, 
+        #ff3300 0%, 
+        #ff6600 20%, 
+        #ff9900 40%, 
+        #ffcc00 60%, 
+        #ffff00 80%, 
+        transparent 100%);
+    border-radius: 50% 50% 0 0;
+    filter: blur(3px);
+    animation: crecer-llama 3s ease-out forwards;
+}
+
+@keyframes crecer-llama {
+    to {
+        height: 80vh;
+    }
+}
+
+.llama1 {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 2.5s;
+}
+
+.llama2 {
+    left: 25%;
+    animation-delay: 0.3s;
+    animation-duration: 3s;
+}
+
+.llama3 {
+    left: 45%;
+    animation-delay: 0.5s;
+    animation-duration: 2.8s;
+}
+
+.llama4 {
+    left: 60%;
+    animation-delay: 0.2s;
+    animation-duration: 3.2s;
+}
+
+.llama5 {
+    left: 75%;
+    animation-delay: 0.6s;
+    animation-duration: 2.7s;
+}
+
+.llama6 {
+    left: 85%;
+    animation-delay: 0.4s;
+    animation-duration: 3.1s;
+}
+
+.fuego-contenedor.activo .llama-grande {
+    animation: crecer-llama 3s ease-out forwards, 
+               bailar-fuego 1.5s ease-in-out infinite;
+}
+
+@keyframes bailar-fuego {
+    0%, 100% {
+        transform: scaleX(1) scaleY(1);
+    }
+    25% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+}
+
+/* MENSAJE */
+.mensaje {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.mensaje.visible {
+    animation: aparecer-mensaje 2s ease 1.5s forwards;
+}
+
+@keyframes aparecer-mensaje {
+    to {
+        opacity: 1;
+    }
+}
+
+.mensaje p {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: #fff;
+    text-align: center;
+    text-shadow: 
+        0 0 10px rgba(255, 150, 0, 0.8),
+        0 0 20px rgba(255, 100, 0, 0.6),
+        0 0 30px rgba(255, 50, 0, 0.4),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-style: italic;
+    font-weight: bold;
+    padding: 20px;
+    animation: pulso-texto 2s ease-in-out infinite;
+}
+
+@keyframes pulso-texto {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px rgba(255, 150, 0, 0.8),
+            0 0 20px rgba(255, 100, 0, 0.6),
+            0 0 30px rgba(255, 50, 0, 0.4),
+            2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px rgba(255, 200, 0, 1),
+            0 0 30px rgba(255, 150, 0, 0.8),
+            0 0 45px rgba(255, 100, 0, 0.6),
+            2px 2px 6px rgba(0, 0, 0, 0.9);
+    }
+}
+
+/* ILUMINACIÓN DE LA HABITACIÓN */
+.habitacion.iluminada {
+    background: radial-gradient(circle at center, 
+        #4a1a0a 0%, 
+        #2a0a05 50%, 
+        #000000 100%);
+    transition: background 3s ease;
+}
