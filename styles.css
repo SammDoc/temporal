@@ -1,89 +1,209 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background: linear-gradient(to bottom, #1a1a1a, #2c2c2c);
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
+    padding: 20px 10px;
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 480px;
-    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.title {
     text-align: center;
+    color: #764ba2;
+    font-size: 2em;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-.words-container {
+.elements-area {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
     margin-bottom: 25px;
+    padding: 15px;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 15px;
+    min-height: 200px;
 }
 
-.word {
-    padding: 8px 12px;
-    background: #444;
-    border-radius: 20px;
-    cursor: grab;
-    font-size: 0.9rem;
-    transition: 0.2s ease;
+.draggable-element {
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: move;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
 }
 
-.word:active {
-    cursor: grabbing;
+.draggable-element.positive {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.draggable-element.negative {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #333;
+}
+
+.draggable-element:active {
     transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.draggable-element.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.draggable-element.hidden {
+    display: none;
+}
+
+.question-section {
+    margin: 25px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+    color: #333;
+    font-size: 1.1em;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
 }
 
 .drop-zone {
-    border: 2px dashed #888;
-    padding: 30px 10px;
+    min-height: 180px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    border: 3px dashed #764ba2;
     border-radius: 15px;
-    min-height: 120px;
-    margin-bottom: 20px;
-    transition: 0.3s ease;
+    padding: 20px 15px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
 }
 
-.drop-zone.active {
-    border-color: #ffd700;
-    background-color: rgba(255, 215, 0, 0.1);
+.drop-zone.drag-over {
+    background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%);
+    border-color: #f5576c;
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(245, 87, 108, 0.3);
 }
 
-.drop-zone .word {
-    margin: 5px;
+.drop-placeholder {
+    text-align: center;
+    color: #764ba2;
+    font-size: 1em;
+    font-weight: 600;
+    opacity: 0.7;
 }
 
-button {
+.drop-zone.has-items .drop-placeholder {
+    display: none;
+}
+
+.selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.submit-btn {
     width: 100%;
-    padding: 12px;
-    background: #ffd700;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: 700;
     cursor: pointer;
-    color: #000;
-    transition: 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-button:hover {
-    background: #ffcc00;
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.6);
 }
 
-#resultMessage {
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.result {
     margin-top: 20px;
-    font-size: 0.95rem;
+    padding: 20px;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    display: none;
+}
+
+.result.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividad para móviles pequeños */
+@media (max-width: 380px) {
+    .container {
+        padding: 20px 10px;
+    }
+    
+    .title {
+        font-size: 1.6em;
+    }
+    
+    .draggable-element {
+        padding: 10px 14px;
+        font-size: 0.85em;
+    }
+    
+    .question {
+        font-size: 1em;
+    }
+    
+    .submit-btn {
+        font-size: 1.1em;
+        padding: 16px;
+    }
 }
