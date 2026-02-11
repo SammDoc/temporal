@@ -3,84 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una Luz en la Oscuridad</title>
+    <title>Reconstruye el Corazón</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <canvas id="particulas"></canvas>
-    
-    <div class="habitacion">
-        <!-- Repisa con la vela -->
-        <div class="repisa">
-            <div class="vela" id="vela">
-                <div class="mecha"></div>
-                <div class="llama">
-                    <div class="llama-centro"></div>
-                    <div class="llama-exterior"></div>
+    <div class="container">
+        <h1>Reconstruye el Corazón 💔</h1>
+        <p class="instructions">Arrastra las piezas para reconstruir el corazón</p>
+        
+        <div class="game-area">
+            <!-- Área del molde donde se colocan las piezas -->
+            <div class="heart-mold">
+                <svg viewBox="0 0 200 200" class="mold-outline">
+                    <path d="M100,170 C20,120 10,90 10,70 C10,50 25,35 45,35 C65,35 85,50 100,70 C115,50 135,35 155,35 C175,35 190,50 190,70 C190,90 180,120 100,170 Z" 
+                          fill="rgba(255,255,255,0.1)" 
+                          stroke="#ff69b4" 
+                          stroke-width="2" 
+                          stroke-dasharray="5,5"/>
+                </svg>
+                
+                <!-- Zonas de drop para cada pieza -->
+                <div class="drop-zone" data-piece="1"></div>
+                <div class="drop-zone" data-piece="2"></div>
+                <div class="drop-zone" data-piece="3"></div>
+                <div class="drop-zone" data-piece="4"></div>
+                <div class="drop-zone" data-piece="5"></div>
+            </div>
+            
+            <!-- Área de piezas dispersas -->
+            <div class="pieces-area">
+                <!-- Pieza 1: Parte superior izquierda -->
+                <div class="heart-piece" data-piece="1" draggable="true">
+                    <svg viewBox="0 0 80 80">
+                        <path d="M10,40 C10,25 20,15 35,15 C50,15 60,25 65,40 L40,50 L10,40 Z" 
+                              fill="#ff1744"/>
+                    </svg>
                 </div>
-                <div class="cuerpo-vela">
-                    <div class="cera-derretida"></div>
+                
+                <!-- Pieza 2: Parte superior derecha -->
+                <div class="heart-piece" data-piece="2" draggable="true">
+                    <svg viewBox="0 0 80 80">
+                        <path d="M15,40 C20,25 30,15 45,15 C60,15 70,25 70,40 L40,50 L15,40 Z" 
+                              fill="#e91e63"/>
+                    </svg>
                 </div>
-                <div class="brillo-vela"></div>
+                
+                <!-- Pieza 3: Centro -->
+                <div class="heart-piece" data-piece="3" draggable="true">
+                    <svg viewBox="0 0 80 80">
+                        <path d="M10,25 L70,25 L40,55 Z" 
+                              fill="#ec407a"/>
+                    </svg>
+                </div>
+                
+                <!-- Pieza 4: Parte inferior izquierda -->
+                <div class="heart-piece" data-piece="4" draggable="true">
+                    <svg viewBox="0 0 80 80">
+                        <path d="M15,15 L45,15 L40,65 L15,40 Z" 
+                              fill="#f48fb1"/>
+                    </svg>
+                </div>
+                
+                <!-- Pieza 5: Parte inferior derecha -->
+                <div class="heart-piece" data-piece="5" draggable="true">
+                    <svg viewBox="0 0 80 80">
+                        <path d="M35,15 L65,15 L65,40 L40,65 Z" 
+                              fill="#f06292"/>
+                    </svg>
+                </div>
             </div>
         </div>
-
-        <!-- Elementos de la habitación -->
-        <div class="muebles" id="muebles">
-            <div class="cuadro">
-                <div class="marco-interior"></div>
-            </div>
-            <div class="estanteria">
-                <div class="estante"></div>
-                <div class="estante"></div>
-                <div class="estante"></div>
-            </div>
-            <div class="silla">
-                <div class="respaldo"></div>
-                <div class="asiento"></div>
-                <div class="pata pata1"></div>
-                <div class="pata pata2"></div>
-            </div>
-            <div class="planta">
-                <div class="maceta"></div>
-                <div class="hoja hoja1"></div>
-                <div class="hoja hoja2"></div>
-                <div class="hoja hoja3"></div>
-            </div>
-            <div class="lampara">
-                <div class="bombilla"></div>
-                <div class="cable"></div>
-            </div>
-            <div class="ventana">
-                <div class="vidrio"></div>
-            </div>
+        
+        <div class="progress">
+            <p>Piezas colocadas: <span id="piece-count">0</span>/5</p>
+            <button id="reset-btn">Reiniciar</button>
         </div>
-
-        <!-- Sistema de fuego avanzado -->
-        <div class="fuego-contenedor" id="fuego">
-            <div class="resplandor-base"></div>
-            <div class="ondas-calor"></div>
-            <div class="llamas-capa-1"></div>
-            <div class="llamas-capa-2"></div>
-            <div class="llamas-capa-3"></div>
-            <div class="brasas" id="brasas"></div>
+        
+        <div id="success-message" class="success-message hidden">
+            <h2>¡Felicidades! 💖</h2>
+            <p>Has reconstruido el corazón</p>
         </div>
-
-        <!-- Humo -->
-        <div class="humo-contenedor" id="humo"></div>
-
-        <!-- Mensaje -->
-        <div class="mensaje" id="mensaje">
-            <div class="mensaje-wrapper">
-                <p class="texto-principal">Eres la persona que llenó de luz mi vida..</p>
-                <div class="destello-texto"></div>
-            </div>
-        </div>
-
-        <!-- Chispas volando -->
-        <div class="chispas-contenedor" id="chispas"></div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
