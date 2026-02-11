@@ -3,25 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Relación</title>
+    <title>Cultiva Nuestro Amor</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>¿Qué puedes ofrecerle a nuestra relación para cuidarla y cultivar amor eterno entre nosotros?</h1>
+        <h1 class="title">Nuestro Amor</h1>
+        
+        <div class="elements-area" id="elementsArea">
+            <div class="draggable-element positive" draggable="true" data-word="amor">amor</div>
+            <div class="draggable-element negative" draggable="true" data-word="sexo">sexo</div>
+            <div class="draggable-element positive" draggable="true" data-word="pasión">pasión</div>
+            <div class="draggable-element positive" draggable="true" data-word="besitos">besitos</div>
+            <div class="draggable-element positive" draggable="true" data-word="apoyo">apoyo</div>
+            <div class="draggable-element positive" draggable="true" data-word="ternura">ternura</div>
+            <div class="draggable-element positive" draggable="true" data-word="bebés">bebés</div>
+            <div class="draggable-element negative" draggable="true" data-word="celos">celos</div>
+            <div class="draggable-element negative" draggable="true" data-word="golpes">golpes</div>
+            <div class="draggable-element negative" draggable="true" data-word="daño">daño</div>
+            <div class="draggable-element negative" draggable="true" data-word="mordidas">mordidas</div>
+            <div class="draggable-element positive" draggable="true" data-word="familia">familia</div>
+            <div class="draggable-element negative" draggable="true" data-word="infidelidad">infidelidad</div>
+            <div class="draggable-element negative" draggable="true" data-word="heridas">heridas</div>
+            <div class="draggable-element negative" draggable="true" data-word="calzones">calzones</div>
+            <div class="draggable-element negative" draggable="true" data-word="odio">odio</div>
+            <div class="draggable-element negative" draggable="true" data-word="envidia">envidia</div>
+            <div class="draggable-element negative" draggable="true" data-word="maldad">maldad</div>
+            <div class="draggable-element negative" draggable="true" data-word="inseguridad">inseguridad</div>
+            <div class="draggable-element positive" draggable="true" data-word="paz">paz</div>
+        </div>
 
-        <div class="words-container" id="wordsContainer">
-            <!-- Palabras generadas por JS -->
+        <div class="question-section">
+            <p class="question">¿Qué puedes ofrecerle a nuestra relación para cuidarla y cultivar amor eterno entre nosotros?</p>
         </div>
 
         <div class="drop-zone" id="dropZone">
-            Arrastra aquí lo que quieres construir con nosotros 💛
+            <p class="drop-placeholder">Arrastra aquí tus respuestas</p>
+            <div class="selected-items" id="selectedItems"></div>
         </div>
 
-        <button id="doneBtn">Enviar</button>
+        <button class="submit-btn" id="submitBtn">Enviar</button>
 
-        <div id="resultMessage"></div>
+        <div class="result" id="result"></div>
     </div>
 
     <script src="script.js"></script>
