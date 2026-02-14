@@ -86,7 +86,7 @@
         setTimeout(function() {
             punishmentScreen.classList.remove('active');
             questionScreen.classList.add('active');
-        }, 1000);
+        }, 300);
     });
 
     // ============================
