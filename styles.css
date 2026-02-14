@@ -244,6 +244,8 @@ html, body {
 #sam-btn {
     border-color: var(--accent);
     background: rgba(201,168,124,0.08);
+    position: absolute;
+    z-index: 2;
 }
 
 #sam-btn:hover {
@@ -254,6 +256,8 @@ html, body {
 #wrong-btn {
     border-color: var(--text-muted);
     color: var(--text-secondary);
+    position: absolute;
+    z-index: 1;
 }
 
 #wrong-btn:hover {
