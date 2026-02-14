@@ -104,7 +104,7 @@
             switchScreen(questionScreen, transitionScreen);
             setTimeout(function() {
                 switchScreen(transitionScreen, dragScreen);
-            }, 3000);
+            }, 6000);
         }
     });
 
