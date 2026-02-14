@@ -98,7 +98,7 @@
             return;
         }
         samClicksAfterPunishment++;
-        if (samClicksAfterPunishment < 4) {
+        if (samClicksAfterPunishment < 1) {
             moveSamButton();
         } else {
             switchScreen(questionScreen, transitionScreen);
